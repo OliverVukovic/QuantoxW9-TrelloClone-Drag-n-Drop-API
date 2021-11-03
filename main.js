@@ -67,7 +67,7 @@ function getDragAfterElement(container, y) {
     } else {
       return closest
     }
-  }, { offset: Number.NEGATIVE_INFINITY }).element
+  }, {offset: Number.NEGATIVE_INFINITY}).element
 }
 
 
@@ -81,7 +81,7 @@ var newOne = document.getElementById("title1");
 var newTwo = document.getElementById("title2");
 var newThree = document.getElementById("title3");
 var newFour = document.getElementById("title4");
-const save = document.getElementById("new-name")
+const save = document.getElementById("new-name-btn")
 
 changeTitle.forEach(newTitle => {
   newTitle.addEventListener("click", e => {
@@ -160,7 +160,7 @@ changeTitle.forEach(newTitle => {
 
 
 // Add New card
-const createBtn = document.getElementById('createbtn');
+const createBtn = document.getElementById('create-button');
 const containerCards = document.querySelector('.cards');
 
 createBtn.addEventListener('click', AddNew);

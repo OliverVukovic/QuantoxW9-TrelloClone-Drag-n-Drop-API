@@ -19,8 +19,8 @@
                 <div class="nav-info">
                     <img class="info-img" src="images/info-black.png" alt="info">
                 </div>
-                <div class="nac-create">
-                    <button class="create-btn" type="">Create</button>
+                <div class="nav-create">
+                    <button id="create-button" class="create-btn" type="">Create</button>
                 </div>
             </div>
         </div>
@@ -30,18 +30,18 @@
             <!-- Prva -->
             <div class="card backlog-card">
                 <div class="box-title first">
-                    <p class="backlog">
+                    <p class="backlog" id="title1">
                         Backlog
                     </p>
                 </div>
                 <div class="box-items">
                     <div class="item" draggable="true">
-                        <p class="item-text">
+                        <p class="item-text" contenteditable="true">
                             Release the course
                         </p>
                     </div>
                     <div class="item" draggable="true">
-                        <p class="item-text">
+                        <p class="item-text" contenteditable="true">
                             Sit back and relax
                         </p>
                     </div>
@@ -61,18 +61,18 @@
             <!-- Druga -->
             <div class="card in-progres-card">
                     <div class="box-title second">
-                        <p class="backlog">
+                        <p class="backlog" id="title2">
                             In Progress
                         </p>
                     </div>
                     <div class="box-items">
                         <div class="item" draggable="true">
-                            <p class="item-text">
+                            <p class="item-text" contenteditable="true">
                                 Work on projects
                             </p>
                         </div>
                         <div class="item" draggable="true">
-                            <p class="item-text">
+                            <p class="item-text" contenteditable="true">
                                 Listen to music
                             </p>
                         </div>
@@ -92,18 +92,18 @@
             <!-- Treca -->
             <div class="card complit-card">
                 <div class="box-title three">
-                    <p class="complete">
+                    <p class="backlog" id="title3">
                         Complete
                     </p>
                 </div>
                 <div class="box-items">
                     <div class="item" draggable="true">
-                        <p class="item-text">
+                        <p class="item-text" contenteditable="true">
                             Being cool
                         </p>
                     </div>
                     <div class="item" draggable="true">
-                        <p class="item-text">
+                        <p class="item-text" contenteditable="true">
                             Getting stuff done
                         </p>
                     </div>
@@ -123,13 +123,13 @@
             <!-- Cetvrta -->
             <div class="card on-hold-card">
                 <div class="box-title foure">
-                    <p class="complete">
+                    <p class="backlog" id="title4">
                         On Hold
                     </p>
                 </div>
                 <div class="box-items">
                     <div class="item" draggable="true">
-                        <p class="item-text">
+                        <p class="item-text" contenteditable="true">
                             Being uncool
                         </p>
                     </div>
@@ -154,7 +154,7 @@
 <!--  info photo  -->
     <div class="info-photo">
         <img src="images/info-photo.png" alt="info-photo">
-        <p>For all questions regarding this website You can ask Stefan and Oliver.</p>
+        <p>For all questions regarding this website You can ask Stefan Djordjevic and Oliver Vukovic.</p>
     </div>
 
 
@@ -165,7 +165,7 @@
             </div>
 
             <div class="enter-new-name">
-                <p>Enter new name</p>
+                <p>Enter new title</p>
                 <img class="pencil" src="./images/pencil-icon.png">
             </div>
 
@@ -173,7 +173,7 @@
                 <input type="text">
             </div>
             
-            <button class="save-new-name" id="new-name">Save</button>
+            <button class="save-new-name" id="new-name-btn">Save</button>
         </div>
       </div>
 
