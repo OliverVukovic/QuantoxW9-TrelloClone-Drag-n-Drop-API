@@ -177,11 +177,11 @@ function AddNew(){
                     </p>
                 </div>
                 <div class="box-items">
-                    <div class="item" draggable="true">
-                        <p contenteditable="true" class="item-text" ondblclick="myDbl()">
-                            New item
-                        </p>
-                    </div>
+                  <div ondblclick="this.contentEditable=true;" onblur="this.contentEditable=false;" contenteditable="false" class="item" draggable="true">
+                    <p class="item-text">
+                      New item
+                    </p>
+                  </div>
                 </div>
                 <div class="icon-save">
                     <div class="icon">

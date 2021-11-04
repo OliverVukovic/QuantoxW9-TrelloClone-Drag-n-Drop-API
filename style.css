@@ -169,9 +169,11 @@ html, body {
 }
 .text-area{
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .input-area{
-    width: 100%;
+    width: 90%;
     padding: 20px;
     font-size: 16px;
     border-radius: 5px;
@@ -255,18 +257,18 @@ html, body {
 
 
 
-   .item-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    /* visibility: hidden; */
+.item-modal {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+display: none;
+/* visibility: hidden; */
 }
 
 .main-popup {
