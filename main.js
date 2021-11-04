@@ -166,11 +166,12 @@ function AddNew(){
                     <div class="icon">
                         + Add items
                     </div>
+                </div>
+                
+                <div class="text-area">
                     <div class="save">
                         <button  onclick="save1()" class="save-btn" type="button">Save</button>
                     </div>
-                </div>
-                <div class="text-area">
                     <input id="input-save-backlog" value="" class="input-area" type="text" placeholder="Enter title for this card...">
                 </div>
         `
