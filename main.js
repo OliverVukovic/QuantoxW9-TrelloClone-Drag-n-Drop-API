@@ -16,8 +16,8 @@ infoBtn.addEventListener("click", event => {
 
 
 addItem.addEventListener('click',() =>{
-    textPlace.style.display = "block";
-    saveBtn.style.display = "block";
+    textPlace.style.display = "flex";
+    saveBtn.style.display = "flex";
     addItem.style.visibility = "hidden";
 });
 
@@ -230,4 +230,29 @@ function AddNew(){
       }
     })
   })
+}
+
+
+
+// Add Items
+saveBtn.addEventListener('click', newItem);
+
+function newItem () {
+  const containers = this.parentElement.parentElement.parentElement.childNodes[3];
+  if (textPlace.value != ''){
+      const newItem = document.createElement('div');
+      newItem.classList.add('item');
+      newItem.setAttribute('draggable', "true");
+      newItem.innerHTML = textPlace.value.trim();
+      containers.appendChild(newItem);
+      textPlace.value = '';
+
+      newItem.addEventListener('dragstart', () => {
+        newItem.classList.add('dragging')
+      });
+      
+        newItem.addEventListener('dragend', () => {
+          newItem.classList.remove('dragging')
+        });
+  };
 }
