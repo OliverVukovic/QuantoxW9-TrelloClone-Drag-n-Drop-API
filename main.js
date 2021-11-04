@@ -1,37 +1,39 @@
-const addItem = document.querySelector('.icon');
-const textPlace = document.querySelector('.input-area');
-const saveBtn = document.querySelector('.save-btn');
+const addItems = document.querySelectorAll('.icon');
+const saveBtns = document.querySelectorAll('.save-btn');
 const infoBtn = document.querySelector(".nav-info");
-const infoPhoto = document.querySelector(".info-photo")
+const infoPhoto = document.querySelector(".info-photo");
+const textPlace = document.querySelector('.input-area');
 
 
-// Info open/close
-infoBtn.addEventListener("click", event => {
-    if (infoPhoto.style.display === "none") {
-        infoPhoto.style.display = "flex";
-    } else {
-        infoPhoto.style.display = "none";
-    }
+// Save New Item
+addItems.forEach(addItem => {
+  addItem.addEventListener('click', () =>{
+          addItem.style.visibility = "hidden";
+          const realTextArea = addItem.closest('.card').querySelector('.text-area');
+          realTextArea .style.display = "block";
+          console.log(realTextArea)
+          console.log(addItem)
+          console.log(addItem.closest('.card'));
+  });
 });
-
-
-addItem.addEventListener('click',() =>{
-    textPlace.style.display = "flex";
-    saveBtn.style.display = "flex";
-    addItem.style.visibility = "hidden";
-});
-
-saveBtn.addEventListener('click', () =>{
-    textPlace.style.display = "none";
-    saveBtn.style.display = "none";
+saveBtns.forEach(saveBtn => {
+  saveBtn.addEventListener('click', (e) =>{
+    const addItem = saveBtn.closest('.card').querySelector('.icon');
+    const realTextArea = addItem.closest('.card').querySelector('.text-area');
+    realTextArea.style.display = "none";
     addItem.style.visibility = "visible";
+    console.log(realTextArea)
+          console.log(addItem)
+          console.log(addItem.closest('.card'));
+    newItem(e)
+});
 });
 
 
 // Drag and Drop 
 
-const draggables = document.querySelectorAll('.item')
-const containers = document.querySelectorAll('.box-items')
+const draggables = document.querySelectorAll('.item');
+const containers = document.querySelectorAll('.box-items');
 
 draggables.forEach(draggable => {
   draggable.addEventListener('dragstart', () => {
@@ -83,17 +85,23 @@ var newThree = document.getElementById("title3");
 var newFour = document.getElementById("title4");
 const save = document.getElementById("new-name-btn")
 
+let titleForChange;
+
 changeTitle.forEach(newTitle => {
   newTitle.addEventListener("click", e => {
     e.preventDefault()
     modal.style.display = "flex";
+    titleForChange = newTitle.querySelector('p');
   });
-  newOne.addEventListener("change", e => {
-    e.preventDefault();
-    var title = writteNew.value;
-    newOne.textContent = title;
-    modal.style.display = "flex";
-  })
+
+  window.onclick = function(event){
+    if(event.target == modal){
+      modal.style.display = 'none';
+      event.preventDefault();
+    }
+  }
+  });
+
   save.addEventListener('click' , function(){
     var title = writteNew.value;
         if(writteNew.value === ""){
@@ -105,58 +113,6 @@ changeTitle.forEach(newTitle => {
           writteNew.value = '';
         }  
   });
-  window.onclick = function(event){
-    if(event.target == modal){
-      modal.style.display = 'none';
-      event.preventDefault();
-    }
-  }
-  });
-
-
-  // newOne.addEventListener("change", e => {
-//   e.preventDefault();
-//   var title = writteNew.value;
-//   newOne.textContent = title;
-//   modal.style.display = "flex";
-// })
-// save.addEventListener('click' , function(){
-//   var title = writteNew.value;
-//       if(writteNew.value === ""){
-//         modal.style.display = 'none';
-//       }
-//       else {
-//         newOne.textContent = title;
-//         modal.style.display = "none";
-//         writteNew.value = '';
-//       }  
-// });
-// window.onclick = function(event){
-//   if(event.target == modal){
-//     modal.style.display = 'none';
-//     event.preventDefault();
-//   }
-// }
-
-
-// writteNew.addEventListener("change", function(){
-//   var title = writteNew.value;
-//   newTwo.textContent = title;
-//   modal.style.display = "none";
-// })
-
-// writteNew.addEventListener("change", function(){
-//   var title = writteNew.value;
-//   newThree.textContent = title;
-//   modal.style.display = "none";
-// })
-
-// writteNew.addEventListener("change", function(){
-//   var title = writteNew.value;
-//   newFour.textContent = title;
-//   modal.style.display = "none";
-// })
-
 
 
 // Add New card
@@ -164,6 +120,29 @@ const createBtn = document.getElementById('create-button');
 const containerCards = document.querySelector('.cards');
 
 createBtn.addEventListener('click', AddNew);
+
+// Add item
+function newItem (e) {
+  const containers = e.target.closest('.card').querySelector('.box-items');
+  // console.log(containers)
+  const realTextPlace = e.target.closest('.text-area').querySelector('input')
+  if (realTextPlace.value != ''){
+      const newItem = document.createElement('div');
+      newItem.classList.add('item');
+      newItem.setAttribute('draggable', "true");
+      newItem.innerHTML = realTextPlace.value;
+      containers.appendChild(newItem);
+      realTextPlace.value = '';
+      newItem.addEventListener('dragstart', () => {
+        newItem.classList.add('dragging')
+      });
+      
+      newItem.addEventListener('dragend', () => {
+        newItem.classList.remove('dragging')
+      });
+  } 
+}
+
 
 function AddNew(){
   const newDiv = document.createElement('div');
@@ -196,8 +175,30 @@ function AddNew(){
                 </div>
         `
 
+        newDiv.querySelector('.box-title').addEventListener("click", e => {
+          e.preventDefault()
+          modal.style.display = "flex";
+          titleForChange = newDiv.querySelector('p');
+        });
 
-        let colors = ['#FF69B4', '#FFD700', '#CD5C5C', '#87CEFA'];
+        const addNewItem = newDiv.querySelector('.icon')
+        addNewItem.addEventListener('click',() =>{
+          addNewItem.style.visibility = "hidden";
+          const realTextArea = addNewItem.closest('.card').querySelector('.text-area');
+          realTextArea .style.display = "block";
+        });
+
+        const saveBtn = newDiv.querySelector('.save-btn');
+        saveBtn.addEventListener('click', (e) =>{
+          const realTextArea = addNewItem.closest('.card').querySelector('.text-area');
+          realTextArea.style.display = "none";
+          addNewItem.style.visibility = "visible";
+          newItem(e);
+        });
+
+
+        // Add random color on New card title
+        let colors = ['#FF69B4', '#FFD700', '#CD5C5C', '#87CEFA', '#ff4466', '#808080', '#4ca3dd', '#ff5511'];
         let random_color = colors[Math.floor(Math.random() * colors.length)];
         let radnomTitleColor = newDiv.querySelector('.new-color');
         radnomTitleColor.style.backgroundColor =  random_color;
@@ -234,25 +235,11 @@ function AddNew(){
 
 
 
-// Add Items
-saveBtn.addEventListener('click', newItem);
-
-function newItem () {
-  const containers = this.parentElement.parentElement.parentElement.childNodes[3];
-  if (textPlace.value != ''){
-      const newItem = document.createElement('div');
-      newItem.classList.add('item');
-      newItem.setAttribute('draggable', "true");
-      newItem.innerHTML = textPlace.value.trim();
-      containers.appendChild(newItem);
-      textPlace.value = '';
-
-      newItem.addEventListener('dragstart', () => {
-        newItem.classList.add('dragging')
-      });
-      
-        newItem.addEventListener('dragend', () => {
-          newItem.classList.remove('dragging')
-        });
-  };
-}
+// Info Open/Close
+infoBtn.addEventListener("click", event => {
+  if (infoPhoto.style.display === "none") {
+      infoPhoto.style.display = "flex";
+  } else {
+      infoPhoto.style.display = "none";
+  }
+})
