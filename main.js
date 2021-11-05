@@ -88,7 +88,7 @@ const save = document.getElementById("new-name-btn")
 let titleForChange;
 
 changeTitle.forEach(newTitle => {
-  newTitle.addEventListener("click", e => {
+  newTitle.addEventListener("dblclick", e => {
     e.preventDefault()
     modal.style.display = "flex";
     titleForChange = newTitle.querySelector('p');
@@ -108,7 +108,7 @@ changeTitle.forEach(newTitle => {
           modal.style.display = 'none';
         }
         else {
-          newOne.textContent = title;
+          titleForChange.textContent = title;
           modal.style.display = "none";
           writteNew.value = '';
         }  
@@ -150,6 +150,8 @@ function AddNew(){
   // newDiv.setAttribute("draggable", "true");
 
   newDiv.innerHTML = `
+        
+              <div id="close-cardx" class="card-close-x">x</div>
                 <div class="box-title new-color">
                     <p class="backlog" id="title1">
                         New Card
@@ -170,15 +172,17 @@ function AddNew(){
                 
                 <div class="text-area">
                     <div class="save">
-                        <button  onclick="save1()" class="save-btn" type="button">Save</button>
+                        <button class="save-btn" type="button">Save</button>
                     </div>
                     <input id="input-save-backlog" value="" class="input-area" type="text" placeholder="Enter title for this card...">
                 </div>
+              </div>
+        
         `
 
-        newDiv.querySelector('.box-title').addEventListener("click", e => {
+        newDiv.querySelector('.card-close-x').addEventListener("click", e => {
           e.preventDefault()
-          modal.style.display = "flex";
+          newDiv.remove();
           titleForChange = newDiv.querySelector('p');
         });
 
@@ -243,4 +247,35 @@ infoBtn.addEventListener("click", event => {
   } else {
       infoPhoto.style.display = "none";
   }
+})
+
+
+
+// Close card
+const closeCardOne = document.getElementById("close-card1");
+var cardOne = document.getElementById("card1");
+
+closeCardOne.addEventListener ("click", () => {
+  cardOne.remove();
+})
+
+const closeCardTwo = document.getElementById("close-card2");
+var cardTwo = document.getElementById("card2");
+
+closeCardTwo.addEventListener ("click", () => {
+  cardTwo.remove();
+})
+
+const closeCardThree = document.getElementById("close-card3");
+var cardThree = document.getElementById("card3");
+
+closeCardThree.addEventListener ("click", () => {
+  cardThree.remove();
+})
+
+const closeCardFour = document.getElementById("close-card4");
+var cardFour = document.getElementById("card4");
+
+closeCardFour.addEventListener ("click", () => {
+  cardFour.remove();
 })
